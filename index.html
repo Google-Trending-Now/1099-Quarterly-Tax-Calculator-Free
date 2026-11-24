@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1099 Quarterly Tax Calculator (Free) — 2026 Self-Employed Estimator</title>
+  <meta name="description" content="Use our 1099 quarterly tax calculator free to estimate 2026 IRS Form 1040-ES payments. Fast estimated quarterly tax calculator for self-employed freelancers and gig workers." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/1099-quarterly-tax-calculator" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="1099 Quarterly Tax Calculator (Free) — 2026 Self-Employed Estimator" />
+  <meta property="og:description" content="Calculate your 2026 self-employment tax, federal brackets, and quarterly IRS Form 1040-ES payments in seconds. Built for US freelancers and 1099 contractors." />
+  <meta property="og:site_name" content="1099 Quarterly Tax Calculator" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="1099 Quarterly Tax Calculator (Free) — 2026 Self-Employed Estimator" />
+  <meta name="twitter:description" content="Estimate 2026 IRS Form 1040-ES quarterly payments, 15.3% self-employment tax, and federal income tax for US 1099 workers." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F172A'/%3E%3Crect x='10' y='10' width='44' height='44' rx='8' fill='none' stroke='%2310B981' stroke-width='2.5' stroke-opacity='0.45'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='system-ui,-apple-system,sans-serif' font-size='32' font-weight='700' fill='%2310B981'%3E%24%3C/text%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "1099 Quarterly Tax Calculator (Free)",
+    "url": "https://yourdomain.com/1099-quarterly-tax-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Free estimated quarterly tax calculator for self-employed US freelancers, independent contractors, gig workers, and sole proprietors using 2026 IRS tax brackets and Schedule SE rules.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who has to pay quarterly estimated taxes (the $1,000 rule)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The IRS generally requires quarterly estimated payments if you expect to owe $1,000 or more in federal tax for the year after subtracting any W-2 withholding and refundable credits. To stay within the IRS safe harbor and avoid underpayment penalties, pay at least 90% of your current-year tax bill or 100% of last year's total tax (110% if your prior-year AGI exceeded $150,000)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I miss a quarterly estimated tax deadline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Missing a Form 1040-ES deadline does not trigger a flat fine, but the IRS charges an underpayment penalty calculated like daily interest on the unpaid amount from the due date until you pay. Paying as soon as you realize you missed a date stops the penalty from growing further."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do home office and mileage deductions lower my 1099 tax bill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Valid Schedule C business expenses—such as business mileage, software subscriptions, supplies, health insurance, and a dedicated home office—reduce your net self-employment profit before taxes are calculated. Every dollar of legitimate business deductions lowers both your 15.3% self-employment tax and your federal income tax."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my 1099 income changes from quarter to quarter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Freelance income is rarely flat across all four quarters. You can update your annual projection in this estimated quarterly tax calculator each quarter and adjust remaining payments, or use the IRS Annualized Income Installment Method (Form 2210, Schedule AI) when you file if most of your income arrives late in the year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I still owe quarterly taxes if I also have a full-time W-2 job?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, if your side-business profit creates $1,000 or more in unpaid tax beyond your paycheck withholding. You have two options: make quarterly payments with Form 1040-ES, or submit an updated Form W-4 to your employer to withhold extra federal tax from each W-2 paycheck, which the IRS treats as paid evenly throughout the year."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-page: #FFFFFF;
+      --bg-subtle: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-navy: #0F172A;
+      --bg-navy-elevated: #1E293B;
+      --border-hairline: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --text-on-navy: #F8FAFC;
+      --text-on-navy-muted: #CBD5E1;
+      --accent: #047857;
+      --accent-hover: #065F46;
+      --accent-soft: #ECFDF5;
+      --accent-bright: #34D399;
+      --bar-se: #059669;
+      --bar-fed: #0F172A;
+      --bar-state: #64748B;
+      --bar-keep: #E2E8F0;
+      --danger: #B91C1C;
+      --danger-bg: #FEF2F2;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-page);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tabular {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Top Bar — 3-zone single-row contract */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      height: 64px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .brand-link:hover {
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background-color: var(--bg-navy);
+      color: var(--accent-bright);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .header-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 6px 0;
+      transition: color 150ms var(--ease-out);
+      text-decoration: none;
+    }
+
+    .header-nav a:hover {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background-color: var(--bg-navy);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+      transition: background-color 150ms var(--ease-out);
+    }
+
+    .header-cta:hover {
+      background-color: var(--bg-navy-elevated);
+      text-decoration: none;
+    }
+
+    /* Hero + Above-the-Fold Calculator */
+    .hero-section {
+      padding: 28px 0 48px;
+      background-color: var(--bg-page);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .hero-header {
+      max-width: 780px;
+      margin-bottom: 22px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.875rem, 3.2vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.028em;
+      color: var(--text-primary);
+      text-wrap: balance;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      max-width: 72ch;
+    }
+
+    /* Calculator Shell — Single-elevation 2-column split */
+    .calculator-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      background-color: var(--bg-surface);
+      overflow: hidden;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 30px;
+      background-color: var(--bg-surface);
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .panel-heading {
+      margin: 0 0 4px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+    }
+
+    .panel-sub {
+      margin: 0 0 20px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .field-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .field-optional {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix,
+    .input-suffix {
+      position: absolute;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .input-prefix {
+      left: 14px;
+    }
+
+    .input-suffix {
+      right: 14px;
+    }
+
+    .field-input,
+    .field-select {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      font-variant-numeric: tabular-nums;
+      transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
+      appearance: none;
+    }
+
+    .field-input.has-prefix {
+      padding-left: 30px;
+    }
+
+    .field-input.has-suffix {
+      padding-right: 34px;
+    }
+
+    .field-select {
+      padding-right: 38px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+    }
+
+    .field-input:hover,
+    .field-select:hover {
+      border-color: #94A3B8;
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.14);
+    }
+
+    .field-input.is-invalid {
+      border-color: var(--danger);
+      background-color: var(--danger-bg);
+    }
+
+    .field-help {
+      margin: 0;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .field-error {
+      margin: 0;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--danger);
+      min-height: 1.2em;
+      display: none;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    .params-summary {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-hairline);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .param-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .param-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .param-value {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .net-profit-inline {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .net-profit-inline strong {
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 18px;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 150ms var(--ease-out), border-color 150ms var(--ease-out), color 150ms var(--ease-out);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: #FFFFFF;
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-subtle);
+      border-color: #94A3B8;
+    }
+
+    /* Results Column */
+    .calc-results {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-subtle);
+    }
+
+    .results-focal {
+      padding: 24px 30px;
+      background-color: var(--bg-navy);
+      color: var(--text-on-navy);
+    }
+
+    .focal-label {
+      margin: 0 0 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--accent-bright);
+    }
+
+    .focal-amount {
+      margin: 0;
+      font-size: clamp(2.125rem, 3.6vw, 2.85rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .focal-subrow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .focal-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .focal-stat-label {
+      font-size: 0.8125rem;
+      color: var(--text-on-navy-muted);
+    }
+
+    .focal-stat-value {
+      font-size: 1.1875rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .results-body {
+      padding: 22px 30px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 18px;
+    }
+
+    /* Allocation Bar */
+    .allocation-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .allocation-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .allocation-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .allocation-caption {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stacked-bar {
+      display: flex;
+      width: 100%;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: var(--bar-keep);
+    }
+
+    .bar-segment {
+      height: 100%;
+      transition: width 200ms var(--ease-out);
+    }
+
+    .bar-se { background-color: var(--bar-se); }
+    .bar-fed { background-color: var(--bar-fed); }
+    .bar-state { background-color: var(--bar-state); }
+
+    .bar-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 16px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Breakdown List */
+    .breakdown-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .breakdown-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.9375rem;
+    }
+
+    .breakdown-name {
+      color: var(--text-secondary);
+    }
+
+    .breakdown-sub {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .breakdown-val {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .breakdown-item.is-total {
+      padding-top: 13px;
+      padding-bottom: 13px;
+      border-bottom: none;
+    }
+
+    .breakdown-item.is-total .breakdown-name,
+    .breakdown-item.is-total .breakdown-val {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .results-status-note {
+      margin: 0;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      padding-top: 4px;
+    }
+
+    .results-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .copy-feedback {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--accent);
+      min-height: 1.2em;
+    }
+
+    /* Content Sections */
+    .content-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .content-section.is-tinted {
+      background-color: var(--bg-subtle);
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      text-wrap: balance;
+    }
+
+    .section-lead {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+
+    /* Quarterly Deadlines Table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      background-color: #FFFFFF;
+    }
+
+    .due-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+
+    .due-table th {
+      padding: 14px 20px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background-color: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-hairline);
+      white-space: nowrap;
+    }
+
+    .due-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-hairline);
+      color: var(--text-primary);
+      vertical-align: middle;
+    }
+
+    .due-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .due-table tbody tr:hover {
+      background-color: #F8FAFC;
+    }
+
+    .due-table .col-amount {
+      text-align: right;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .due-table th.col-amount {
+      text-align: right;
+    }
+
+    .quarter-label {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .due-table td.due-date-strong {
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .table-footnote {
+      margin: 14px 0 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Practical Guide Grid */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+
+    .guide-item {
+      padding-top: 20px;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .guide-step-num {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .guide-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-primary);
+    }
+
+    .guide-item p {
+      margin: 0 0 12px;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .guide-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    .guide-formula {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
+    }
+
+    .guide-formula-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .guide-formula-code {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      max-width: 820px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .faq-trigger:hover {
+      color: var(--accent);
+    }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      transition: transform 180ms var(--ease-out);
+    }
+
+    .faq-trigger[aria-expanded="true"] .faq-icon {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .faq-panel {
+      padding: 0 0 22px;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 72ch;
+    }
+
+    .faq-panel[hidden] {
+      display: none;
+    }
+
+    .faq-panel p {
+      margin: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 40px 0 48px;
+      background-color: var(--bg-navy);
+      color: var(--text-on-navy-muted);
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-disclaimer {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 84ch;
+      color: var(--text-on-navy-muted);
+    }
+
+    .footer-disclaimer strong {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.8125rem;
+      color: #94A3B8;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .calculator-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-inputs {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .guide-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .header-inner {
+        height: 58px;
+        gap: 16px;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .hero-section {
+        padding: 24px 0 40px;
+      }
+
+      .calc-inputs,
+      .results-focal,
+      .results-body {
+        padding: 22px 20px;
+      }
+
+      .field-row-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section {
+        padding: 44px 0;
+      }
+
+      .btn {
+        min-height: 44px;
+      }
+
+      .due-table th,
+      .due-table td {
+        padding: 12px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-link" aria-label="1099 Quarterly Tax Calculator Home">
+        <span class="brand-mark" aria-hidden="true">$</span>
+        <span>Quarterly1099</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#due-dates">Due Dates</a>
+        <a href="#tax-guide">Tax Guide</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#calculator" class="header-cta" id="header-jump-cta">Estimate Taxes</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-section" id="calculator" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-header">
+          <div class="hero-meta">
+            <span>2026 Tax Year</span>
+            <span aria-hidden="true">·</span>
+            <span>Form 1040-ES</span>
+            <span aria-hidden="true">·</span>
+            <span>Schedule SE</span>
+          </div>
+          <h1 id="hero-heading" class="hero-title">1099 Quarterly Tax Calculator (Free)</h1>
+          <p class="hero-subtitle">
+            Figure out what you owe the IRS every quarter before the deadline sneaks up. This estimated quarterly tax calculator for self-employed freelancers, gig workers, and sole proprietors applies 2026 IRS brackets, standard deductions, and the 15.3% self-employment tax automatically.
+          </p>
+        </div>
+
+        <div class="calculator-shell">
+          <form class="calc-inputs" id="tax-form" novalidate aria-label="1099 tax inputs">
+            <h2 class="panel-heading">Your 2026 Income Details</h2>
+            <p class="panel-sub">Enter annual estimates. Your quarterly payment updates instantly as you type.</p>
+
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="gross-income" class="field-label">
+                  <span>Estimated Annual Gross 1099 Income</span>
+                </label>
+                <div class="input-wrap">
+                  <span class="input-prefix" aria-hidden="true">$</span>
+                  <input
+                    type="number"
+                    id="gross-income"
+                    name="grossIncome"
+                    class="field-input has-prefix"
+                    min="0"
+                    step="100"
+                    inputmode="decimal"
+                    value="85000"
+                    aria-describedby="gross-help gross-error"
+                  />
+                </div>
+                <p id="gross-help" class="field-help">Total freelance, Uber, DoorDash, Upwork, or contract revenue before expenses.</p>
+                <p id="gross-error" class="field-error" role="alert"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="business-expenses" class="field-label">
+                  <span>Estimated Annual Business Expenses / Deductions</span>
+                </label>
+                <div class="input-wrap">
+                  <span class="input-prefix" aria-hidden="true">$</span>
+                  <input
+                    type="number"
+                    id="business-expenses"
+                    name="businessExpenses"
+                    class="field-input has-prefix"
+                    min="0"
+                    step="100"
+                    inputmode="decimal"
+                    value="12000"
+                    aria-describedby="expenses-help expenses-error"
+                  />
+                </div>
+                <p id="expenses-help" class="field-help">Schedule C write-offs like mileage, software, gear, supplies, and home office.</p>
+                <p id="expenses-error" class="field-error" role="alert"></p>
+              </div>
+
+              <div class="field-group">
+                <label for="filing-status" class="field-label">
+                  <span>Filing Status</span>
+                </label>
+                <select id="filing-status" name="filingStatus" class="field-select">
+                  <option value="single">Single (2026 Std. Deduction: $16,100)</option>
+                  <option value="married">Married Filing Jointly (2026 Std. Deduction: $32,200)</option>
+                  <option value="hoh">Head of Household (2026 Std. Deduction: $24,150)</option>
+                </select>
+              </div>
+
+              <div class="field-row-2">
+                <div class="field-group">
+                  <label for="w2-income" class="field-label">
+                    <span>Other W-2 Income</span>
+                    <span class="field-optional">Optional</span>
+                  </label>
+                  <div class="input-wrap">
+                    <span class="input-prefix" aria-hidden="true">$</span>
+                    <input
+                      type="number"
+                      id="w2-income"
+                      name="w2Income"
+                      class="field-input has-prefix"
+                      min="0"
+                      step="500"
+                      inputmode="decimal"
+                      value="0"
+                      aria-describedby="w2-help w2-error"
+                    />
+                  </div>
+                  <p id="w2-help" class="field-help">Used to place your 1099 profit in the right federal bracket and track the $184,500 Social Security cap.</p>
+                  <p id="w2-error" class="field-error" role="alert"></p>
+                </div>
+
+                <div class="field-group">
+                  <label for="state-rate" class="field-label">
+                    <span>State Income Tax Rate</span>
+                    <span class="field-optional">Optional</span>
+                  </label>
+                  <div class="input-wrap">
+                    <input
+                      type="number"
+                      id="state-rate"
+                      name="stateRate"
+                      class="field-input has-suffix"
+                      min="0"
+                      max="15"
+                      step="0.1"
+                      inputmode="decimal"
+                      value="0"
+                      aria-describedby="state-help state-error"
+                    />
+                    <span class="input-suffix" aria-hidden="true">%</span>
+                  </div>
+                  <p id="state-help" class="field-help">Default 0% (TX, FL, WA, NV, TN, WY, SD, AK, NH). Enter your state rate (typically 3%–9%) if applicable.</p>
+                  <p id="state-error" class="field-error" role="alert"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="params-summary" aria-label="2026 IRS calculation parameters">
+              <div class="param-cell">
+                <span class="param-label">2026 Std. Deduction</span>
+                <span class="param-value" id="param-std-deduction">$16,100</span>
+              </div>
+              <div class="param-cell">
+                <span class="param-label">2026 SS Wage Base</span>
+                <span class="param-value">$184,500</span>
+              </div>
+              <div class="param-cell">
+                <span class="param-label">SE Taxable Share</span>
+                <span class="param-value">92.35%</span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <div class="net-profit-inline">
+                Net 1099 Profit: <strong id="net-profit-display">$73,000</strong>
+              </div>
+              <div class="btn-row">
+                <button type="button" id="reset-btn" class="btn btn-secondary">Reset</button>
+              </div>
+            </div>
+          </form>
+
+          <section class="calc-results" aria-label="Estimated tax results" aria-live="polite">
+            <div class="results-focal">
+              <p class="focal-label">Recommended Quarterly Payment (Total &divide; 4)</p>
+              <p class="focal-amount" id="quarterly-payment">$0</p>
+
+              <div class="focal-subrow">
+                <div class="focal-stat">
+                  <span class="focal-stat-label">Total Estimated Annual Tax</span>
+                  <span class="focal-stat-value" id="annual-total">$0</span>
+                </div>
+                <div class="focal-stat">
+                  <span class="focal-stat-label">Effective Rate on 1099 Profit</span>
+                  <span class="focal-stat-value" id="effective-rate">0.0%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="results-body">
+              <div class="allocation-block">
+                <div class="allocation-header">
+                  <span class="allocation-title">Where Your Net 1099 Profit Goes</span>
+                  <span class="allocation-caption" id="keep-percent">0.0% estimated take-home</span>
+                </div>
+                <div class="stacked-bar" role="img" id="allocation-bar" aria-label="Visual breakdown of estimated taxes versus take-home profit">
+                  <div class="bar-segment bar-se" id="bar-se" style="width: 0%"></div>
+                  <div class="bar-segment bar-fed" id="bar-fed" style="width: 0%"></div>
+                  <div class="bar-segment bar-state" id="bar-state" style="width: 0%"></div>
+                </div>
+                <div class="bar-legend">
+                  <span class="legend-item">
+                    <span class="legend-swatch bar-se" aria-hidden="true"></span>
+                    <span>SE Tax (<span id="pct-se">0%</span>)</span>
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-swatch bar-fed" aria-hidden="true"></span>
+                    <span>Federal (<span id="pct-fed">0%</span>)</span>
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-swatch bar-state" aria-hidden="true"></span>
+                    <span>State (<span id="pct-state">0%</span>)</span>
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-swatch" style="background-color: var(--bar-keep); border: 1px solid var(--border-strong);" aria-hidden="true"></span>
+                    <span>Take-Home (<span id="pct-keep">0%</span>)</span>
+                  </span>
+                </div>
+              </div>
+
+              <ul class="breakdown-list">
+                <li class="breakdown-item">
+                  <div>
+                    <span class="breakdown-name">Self-Employment Tax (Schedule SE)</span>
+                    <span class="breakdown-sub" id="se-tax-detail">92.35% of net profit &times; 15.3%</span>
+                  </div>
+                  <span class="breakdown-val" id="se-tax-amount">$0</span>
+                </li>
+                <li class="breakdown-item">
+                  <div>
+                    <span class="breakdown-name">Federal Income Tax (2026 Brackets)</span>
+                    <span class="breakdown-sub" id="fed-tax-detail">After standard deduction &amp; 50% SE deduction</span>
+                  </div>
+                  <span class="breakdown-val" id="fed-tax-amount">$0</span>
+                </li>
+                <li class="breakdown-item">
+                  <div>
+                    <span class="breakdown-name">Estimated State Income Tax</span>
+                    <span class="breakdown-sub" id="state-tax-detail">Applied at 0.0% on taxable 1099 income</span>
+                  </div>
+                  <span class="breakdown-val" id="state-tax-amount">$0</span>
+                </li>
+                <li class="breakdown-item">
+                  <div>
+                    <span class="breakdown-name">Deductible Half of SE Tax</span>
+                    <span class="breakdown-sub">Lowers your Adjusted Gross Income (Schedule 1)</span>
+                  </div>
+                  <span class="breakdown-val" id="half-se-amount">-$0</span>
+                </li>
+                <li class="breakdown-item is-total">
+                  <div>
+                    <span class="breakdown-name">Estimated Annual Take-Home (1099)</span>
+                    <span class="breakdown-sub">Net 1099 profit minus estimated taxes</span>
+                  </div>
+                  <span class="breakdown-val" id="take-home-amount">$0</span>
+                </li>
+              </ul>
+
+              <p class="results-status-note" id="results-note"></p>
+
+              <div class="results-actions">
+                <span class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></span>
+                <button type="button" id="copy-btn" class="btn btn-primary">Copy Summary</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section is-tinted" id="due-dates" aria-labelledby="due-dates-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="due-dates-heading" class="section-title">2026 IRS Quarterly Estimated Tax Due Dates</h2>
+          <p class="section-lead">
+            The IRS splits the year into four unequal payment periods on Form 1040-ES. Based on your numbers above, here is what to set aside for each deadline.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="due-table">
+            <thead>
+              <tr>
+                <th scope="col">Quarter</th>
+                <th scope="col">Income Earned Period</th>
+                <th scope="col">IRS Due Date</th>
+                <th scope="col" class="col-amount">Your Est. Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="quarter-label">Q1</td>
+                <td>January 1 – March 31, 2026</td>
+                <td class="due-date-strong">April 15, 2026</td>
+                <td class="col-amount" data-quarter-amount>$0</td>
+              </tr>
+              <tr>
+                <td class="quarter-label">Q2</td>
+                <td>April 1 – May 31, 2026</td>
+                <td class="due-date-strong">June 15, 2026</td>
+                <td class="col-amount" data-quarter-amount>$0</td>
+              </tr>
+              <tr>
+                <td class="quarter-label">Q3</td>
+                <td>June 1 – August 31, 2026</td>
+                <td class="due-date-strong">September 15, 2026</td>
+                <td class="col-amount" data-quarter-amount>$0</td>
+              </tr>
+              <tr>
+                <td class="quarter-label">Q4</td>
+                <td>September 1 – December 31, 2026</td>
+                <td class="due-date-strong">January 15, 2027</td>
+                <td class="col-amount" data-quarter-amount>$0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-footnote">
+          Notice that Q2 only covers two months (April and May). If a due date falls on a weekend or federal holiday, the IRS shifts it to the next business day. Remember to check your state revenue department for separate state estimated tax vouchers.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" id="tax-guide" aria-labelledby="guide-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="guide-heading" class="section-title">How This Estimated Quarterly Tax Calculator Works for Self-Employed Filers</h2>
+          <p class="section-lead">
+            When you get a W-2 paycheck, your employer splits payroll taxes with you and sends federal withholding to the IRS every payday. As a 1099 contractor, you handle both sides yourself.
+          </p>
+        </div>
+
+        <div class="guide-grid">
+          <article class="guide-item">
+            <span class="guide-step-num">01</span>
+            <h3>The 15.3% Self-Employment Tax</h3>
+            <p>
+              W-2 employees pay 7.65% for Social Security and Medicare, and their employer matches the other 7.65%. When you work for yourself, Schedule SE requires you to pay both halves: 12.4% for Social Security (capped at $184,500 of combined W-2 and net SE earnings in 2026) plus 2.9% for Medicare with no income cap.
+            </p>
+            <p>
+              High earners also owe a 0.9% Additional Medicare Tax on combined earnings above $200,000 (Single / Head of Household) or $250,000 (Married Filing Jointly).
+            </p>
+          </article>
+
+          <article class="guide-item">
+            <span class="guide-step-num">02</span>
+            <h3>Why You Multiply Net Profit by 92.35%</h3>
+            <p>
+              Employers get to deduct their 7.65% payroll tax share as a business expense. To keep things fair for solo earners, the IRS lets you subtract 7.65% from your Schedule C net profit before applying the 15.3% rate—which is why Schedule SE multiplies your net profit by 0.9235.
+            </p>
+            <p>
+              On top of that, you deduct half of your regular self-employment tax directly from your Adjusted Gross Income before calculating federal income tax brackets.
+            </p>
+          </article>
+
+          <article class="guide-item">
+            <span class="guide-step-num">03</span>
+            <h3>How to Pay with IRS Direct Pay</h3>
+            <p>
+              You do not need paper Form 1040-ES vouchers to pay on time. Go to <strong>irs.gov/payments</strong>, choose <strong>IRS Direct Pay</strong> (free from a checking or savings account), select <strong>Estimated Tax</strong> as the reason, choose <strong>1040-ES</strong>, and pick the <strong>2026</strong> tax year.
+            </p>
+            <p>
+              Save the confirmation number for your tax preparer or tax software next spring—you will enter the exact total you paid so it gets credited on your Form 1040.
+            </p>
+          </article>
+        </div>
+
+        <div class="guide-formula">
+          <span class="guide-formula-label">Core Schedule SE &amp; 1040-ES Formula</span>
+          <span class="guide-formula-code">Quarterly Payment = (SE Tax + Federal Income Tax + State Tax) &divide; 4</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section is-tinted" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="faq-heading" class="section-title">Frequently Asked Questions About 1099 Estimated Taxes</h2>
+          <p class="section-lead">
+            Plain answers to the five questions freelancers and gig workers ask most when using an estimated quarterly tax calculator for self-employed income.
+          </p>
+        </div>
+
+        <div class="faq-list" id="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="true" aria-controls="faq-panel-1" id="faq-btn-1">
+              <span>Who has to pay quarterly estimated taxes (the $1,000 rule)?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+              <p>
+                The IRS generally requires quarterly estimated payments if you expect to owe $1,000 or more in federal tax for the year after subtracting any W-2 withholding and refundable credits. To stay within the IRS safe harbor and avoid underpayment penalties, pay at least 90% of your current-year tax bill or 100% of last year's total tax (110% if your prior-year AGI exceeded $150,000).
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
+              <span>What happens if I miss a quarterly estimated tax deadline?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <p>
+                Missing a Form 1040-ES deadline does not trigger a flat fine, but the IRS charges an underpayment penalty calculated like daily interest on the unpaid amount from the due date until you pay. Paying as soon as you realize you missed a date stops the penalty from growing further.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
+              <span>How do home office and mileage deductions lower my 1099 tax bill?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <p>
+                Valid Schedule C business expenses—such as business mileage, software subscriptions, supplies, health insurance, and a dedicated home office—reduce your net self-employment profit before taxes are calculated. Every dollar of legitimate business deductions lowers both your 15.3% self-employment tax and your federal income tax.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
+              <span>What if my 1099 income changes from quarter to quarter?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <p>
+                Freelance income is rarely flat across all four quarters. You can update your annual projection in this 1099 quarterly tax calculator free each quarter and adjust remaining payments, or use the IRS Annualized Income Installment Method (Form 2210, Schedule AI) when you file if most of your income arrives late in the year.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
+              <span>Do I still owe quarterly taxes if I also have a full-time W-2 job?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <p>
+                Yes, if your side-business profit creates $1,000 or more in unpaid tax beyond your paycheck withholding. You have two options: make quarterly payments with Form 1040-ES, or submit an updated Form W-4 to your employer to withhold extra federal tax from each W-2 paycheck, which the IRS treats as paid evenly throughout the year.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p class="footer-disclaimer">
+        <strong>Tax Estimation Disclaimer:</strong> This 1099 quarterly tax calculator free tool is provided for educational and estimation purposes only and does not constitute formal tax, legal, or accounting advice. Estimates do not include the Qualified Business Income (QBI) deduction, tax credits, itemized deductions, or local city taxes. Consult a licensed CPA or Enrolled Agent regarding your specific filing situation.
+      </p>
+      <div class="footer-bottom">
+        <span>&copy; <span id="copyright-year">2026</span> Quarterly1099. All calculations run privately in your browser.</span>
+        <div class="footer-links">
+          <a href="#calculator">Calculator</a>
+          <a href="#due-dates">2026 Due Dates</a>
+          <a href="#tax-guide">SE Tax Guide</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var TAX_YEAR_2026 = {
+        seNetMultiplier: 0.9235,
+        seMinThreshold: 400,
+        ssRate: 0.124,
+        ssWageBase: 184500,
+        medicareRate: 0.029,
+        addlMedicareRate: 0.009,
+        addlMedicareThreshold: {
+          single: 200000,
+          married: 250000,
+          hoh: 200000
+        },
+        standardDeduction: {
+          single: 16100,
+          married: 32200,
+          hoh: 24150
+        },
+        brackets: {
+          single: [
+            { limit: 12400, rate: 0.10 },
+            { limit: 50400, rate: 0.12 },
+            { limit: 105700, rate: 0.22 },
+            { limit: 201775, rate: 0.24 },
+            { limit: 256225, rate: 0.32 },
+            { limit: 640600, rate: 0.35 },
+            { limit: Infinity, rate: 0.37 }
+          ],
+          married: [
+            { limit: 24800, rate: 0.10 },
+            { limit: 100800, rate: 0.12 },
+            { limit: 211400, rate: 0.22 },
+            { limit: 403550, rate: 0.24 },
+            { limit: 512450, rate: 0.32 },
+            { limit: 768700, rate: 0.35 },
+            { limit: Infinity, rate: 0.37 }
+          ],
+          hoh: [
+            { limit: 17700, rate: 0.10 },
+            { limit: 67450, rate: 0.12 },
+            { limit: 105700, rate: 0.22 },
+            { limit: 201750, rate: 0.24 },
+            { limit: 256200, rate: 0.32 },
+            { limit: 640600, rate: 0.35 },
+            { limit: Infinity, rate: 0.37 }
+          ]
+        }
+      };
+
+      function calculateBracketTax(taxableIncome, brackets) {
+        if (taxableIncome <= 0) return 0;
+        var tax = 0;
+        var previousLimit = 0;
+        for (var i = 0; i < brackets.length; i++) {
+          var bracket = brackets[i];
+          if (taxableIncome <= previousLimit) break;
+          var taxableInBracket = Math.min(taxableIncome, bracket.limit) - previousLimit;
+          if (taxableInBracket > 0) {
+            tax += taxableInBracket * bracket.rate;
+          }
+          previousLimit = bracket.limit;
+        }
+        return tax;
+      }
+
+      function calculateQuarterlyTaxes(params) {
+        var grossIncome = Math.max(0, Number(params.grossIncome) || 0);
+        var businessExpenses = Math.max(0, Number(params.businessExpenses) || 0);
+        var w2Income = Math.max(0, Number(params.w2Income) || 0);
+        var stateRate = Math.min(100, Math.max(0, Number(params.stateRate) || 0));
+        var filingStatus = TAX_YEAR_2026.brackets[params.filingStatus] ? params.filingStatus : 'single';
+
+        var rawNetSE = grossIncome - businessExpenses;
+        var netSE = Math.max(0, rawNetSE);
+        var hasLoss = rawNetSE < 0;
+
+        var seTaxableEarnings = 0;
+        var ssTax = 0;
+        var medicareTax = 0;
+        var regularSeTax = 0;
+        var additionalMedicareTax = 0;
+        var totalSeTax = 0;
+        var deductibleHalfSeTax = 0;
+        var ssCapApplied = false;
+
+        if (netSE >= TAX_YEAR_2026.seMinThreshold) {
+          seTaxableEarnings = netSE * TAX_YEAR_2026.seNetMultiplier;
+
+          var remainingSSBase = Math.max(0, TAX_YEAR_2026.ssWageBase - w2Income);
+          var ssTaxableSE = Math.min(seTaxableEarnings, remainingSSBase);
+          ssCapApplied = seTaxableEarnings > remainingSSBase;
+
+          ssTax = ssTaxableSE * TAX_YEAR_2026.ssRate;
+          medicareTax = seTaxableEarnings * TAX_YEAR_2026.medicareRate;
+          regularSeTax = ssTax + medicareTax;
+          deductibleHalfSeTax = regularSeTax * 0.5;
+
+          var addlThreshold = TAX_YEAR_2026.addlMedicareThreshold[filingStatus];
+          var combinedMedicareWages = w2Income + seTaxableEarnings;
+          var w2OverThreshold = Math.max(0, w2Income - addlThreshold);
+          var totalOverThreshold = Math.max(0, combinedMedicareWages - addlThreshold);
+          var seAdditionalMedicareBase = Math.max(0, totalOverThreshold - w2OverThreshold);
+          additionalMedicareTax = seAdditionalMedicareBase * TAX_YEAR_2026.addlMedicareRate;
+
+          totalSeTax = regularSeTax + additionalMedicareTax;
+        }
+
+        var standardDeduction = TAX_YEAR_2026.standardDeduction[filingStatus];
+        var brackets = TAX_YEAR_2026.brackets[filingStatus];
+
+        var w2OnlyTaxable = Math.max(0, w2Income - standardDeduction);
+        var combinedTaxable = Math.max(0, w2Income + netSE - deductibleHalfSeTax - standardDeduction);
+        var incrementalTaxable1099 = Math.max(0, combinedTaxable - w2OnlyTaxable);
+
+        var federalTaxCombined = calculateBracketTax(combinedTaxable, brackets);
+        var federalTaxW2Only = calculateBracketTax(w2OnlyTaxable, brackets);
+        var federalIncomeTax = Math.max(0, federalTaxCombined - federalTaxW2Only);
+
+        var stateTax = incrementalTaxable1099 * (stateRate / 100);
+        var totalAnnualTax = totalSeTax + federalIncomeTax + stateTax;
+        var quarterlyPayment = totalAnnualTax / 4;
+        var effectiveTaxRate = netSE > 0 ? (totalAnnualTax / netSE) * 100 : 0;
+        var takeHome1099 = Math.max(0, netSE - totalAnnualTax);
+
+        return {
+          grossIncome: grossIncome,
+          businessExpenses: businessExpenses,
+          w2Income: w2Income,
+          stateRate: stateRate,
+          filingStatus: filingStatus,
+          rawNetSE: rawNetSE,
+          netSE: netSE,
+          hasLoss: hasLoss,
+          seTaxableEarnings: seTaxableEarnings,
+          ssTax: ssTax,
+          medicareTax: medicareTax,
+          additionalMedicareTax: additionalMedicareTax,
+          regularSeTax: regularSeTax,
+          totalSeTax: totalSeTax,
+          deductibleHalfSeTax: deductibleHalfSeTax,
+          ssCapApplied: ssCapApplied,
+          standardDeduction: standardDeduction,
+          taxableIncome1099: incrementalTaxable1099,
+          federalIncomeTax: federalIncomeTax,
+          stateTax: stateTax,
+          totalAnnualTax: totalAnnualTax,
+          quarterlyPayment: quarterlyPayment,
+          effectiveTaxRate: effectiveTaxRate,
+          takeHome1099: takeHome1099
+        };
+      }
+
+      if (typeof globalThis !== 'undefined') {
+        globalThis.__TAX_CALC_2026__ = {
+          TAX_YEAR_2026: TAX_YEAR_2026,
+          calculateBracketTax: calculateBracketTax,
+          calculateQuarterlyTaxes: calculateQuarterlyTaxes
+        };
+      }
+
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      var currencyFmt = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      });
+
+      var currencyExactFmt = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      var filingLabels = {
+        single: 'Single',
+        married: 'Married Filing Jointly',
+        hoh: 'Head of Household'
+      };
+
+      var els = {
+        grossIncome: document.getElementById('gross-income'),
+        businessExpenses: document.getElementById('business-expenses'),
+        filingStatus: document.getElementById('filing-status'),
+        w2Income: document.getElementById('w2-income'),
+        stateRate: document.getElementById('state-rate'),
+        grossError: document.getElementById('gross-error'),
+        expensesError: document.getElementById('expenses-error'),
+        w2Error: document.getElementById('w2-error'),
+        stateError: document.getElementById('state-error'),
+        netProfitDisplay: document.getElementById('net-profit-display'),
+        paramStdDeduction: document.getElementById('param-std-deduction'),
+        quarterlyPayment: document.getElementById('quarterly-payment'),
+        annualTotal: document.getElementById('annual-total'),
+        effectiveRate: document.getElementById('effective-rate'),
+        keepPercent: document.getElementById('keep-percent'),
+        allocationBar: document.getElementById('allocation-bar'),
+        barSe: document.getElementById('bar-se'),
+        barFed: document.getElementById('bar-fed'),
+        barState: document.getElementById('bar-state'),
+        pctSe: document.getElementById('pct-se'),
+        pctFed: document.getElementById('pct-fed'),
+        pctState: document.getElementById('pct-state'),
+        pctKeep: document.getElementById('pct-keep'),
+        seTaxDetail: document.getElementById('se-tax-detail'),
+        seTaxAmount: document.getElementById('se-tax-amount'),
+        fedTaxDetail: document.getElementById('fed-tax-detail'),
+        fedTaxAmount: document.getElementById('fed-tax-amount'),
+        stateTaxDetail: document.getElementById('state-tax-detail'),
+        stateTaxAmount: document.getElementById('state-tax-amount'),
+        halfSeAmount: document.getElementById('half-se-amount'),
+        takeHomeAmount: document.getElementById('take-home-amount'),
+        resultsNote: document.getElementById('results-note'),
+        copyBtn: document.getElementById('copy-btn'),
+        copyFeedback: document.getElementById('copy-feedback'),
+        resetBtn: document.getElementById('reset-btn'),
+        quarterAmounts: document.querySelectorAll('[data-quarter-amount]'),
+        headerJumpCta: document.getElementById('header-jump-cta'),
+        copyrightYear: document.getElementById('copyright-year')
+      };
+
+      var lastResult = null;
+      var copyTimeout = null;
+
+      function validateField(inputEl, errorEl, options) {
+        var raw = inputEl.value.trim();
+        if (raw === '') {
+          inputEl.classList.remove('is-invalid');
+          errorEl.textContent = '';
+          errorEl.classList.remove('visible');
+          return 0;
+        }
+        var num = Number(raw);
+        if (isNaN(num) || num < 0) {
+          inputEl.classList.add('is-invalid');
+          errorEl.textContent = 'Enter a non-negative number.';
+          errorEl.classList.add('visible');
+          return 0;
+        }
+        if (options && typeof options.max === 'number' && num > options.max) {
+          inputEl.classList.add('is-invalid');
+          errorEl.textContent = 'Enter a rate between 0% and ' + options.max + '%.';
+          errorEl.classList.add('visible');
+          return options.max;
+        }
+        inputEl.classList.remove('is-invalid');
+        errorEl.textContent = '';
+        errorEl.classList.remove('visible');
+        return num;
+      }
+
+      function renderResults() {
+        var gross = validateField(els.grossIncome, els.grossError);
+        var expenses = validateField(els.businessExpenses, els.expensesError);
+        var w2 = validateField(els.w2Income, els.w2Error);
+        var stateRate = validateField(els.stateRate, els.stateError, { max: 15 });
+        var status = els.filingStatus.value;
+
+        var res = calculateQuarterlyTaxes({
+          grossIncome: gross,
+          businessExpenses: expenses,
+          filingStatus: status,
+          w2Income: w2,
+          stateRate: stateRate
+        });
+        lastResult = res;
+
+        els.netProfitDisplay.textContent = res.hasLoss
+          ? '-' + currencyFmt.format(Math.abs(res.rawNetSE)) + ' (Loss)'
+          : currencyFmt.format(res.netSE);
+        if (els.paramStdDeduction) {
+          els.paramStdDeduction.textContent = currencyFmt.format(res.standardDeduction);
+        }
+
+        els.quarterlyPayment.textContent = currencyFmt.format(Math.round(res.quarterlyPayment));
+        els.annualTotal.textContent = currencyFmt.format(Math.round(res.totalAnnualTax));
+        els.effectiveRate.textContent = res.effectiveTaxRate.toFixed(1) + '%';
+
+        els.seTaxAmount.textContent = currencyFmt.format(Math.round(res.totalSeTax));
+        els.fedTaxAmount.textContent = currencyFmt.format(Math.round(res.federalIncomeTax));
+        els.stateTaxAmount.textContent = currencyFmt.format(Math.round(res.stateTax));
+        els.halfSeAmount.textContent = res.deductibleHalfSeTax > 0
+          ? '-' + currencyFmt.format(Math.round(res.deductibleHalfSeTax))
+          : '$0';
+        els.takeHomeAmount.textContent = currencyFmt.format(Math.round(res.takeHome1099));
+
+        if (res.netSE > 0 && res.netSE < TAX_YEAR_2026.seMinThreshold) {
+          els.seTaxDetail.textContent = 'Under $400 IRS Schedule SE threshold ($0 due)';
+        } else if (res.additionalMedicareTax > 0) {
+          els.seTaxDetail.textContent = 'SS capped at $184,500 + 2.9% Medicare + 0.9% Addl. Medicare';
+        } else if (res.ssCapApplied) {
+          els.seTaxDetail.textContent = '12.4% SS capped at $184,500 combined + 2.9% Medicare';
+        } else {
+          els.seTaxDetail.textContent = '92.35% of net profit (' + currencyFmt.format(Math.round(res.seTaxableEarnings)) + ') × 15.3%';
+        }
+
+        if (res.w2Income > 0) {
+          els.fedTaxDetail.textContent = 'Incremental federal tax on 1099 profit above W-2 income';
+        } else {
+          els.fedTaxDetail.textContent = '2026 ' + filingLabels[res.filingStatus] + ' brackets after ' + currencyFmt.format(res.standardDeduction) + ' std. deduction';
+        }
+
+        els.stateTaxDetail.textContent = stateRate > 0
+          ? stateRate.toFixed(1) + '% on ' + currencyFmt.format(Math.round(res.taxableIncome1099)) + ' taxable 1099 income'
+          : 'Set to 0% (no state income tax added)';
+
+        var sePct = res.netSE > 0 ? (res.totalSeTax / res.netSE) * 100 : 0;
+        var fedPct = res.netSE > 0 ? (res.federalIncomeTax / res.netSE) * 100 : 0;
+        var statePct = res.netSE > 0 ? (res.stateTax / res.netSE) * 100 : 0;
+        var totalPct = Math.min(100, sePct + fedPct + statePct);
+        var keepPct = res.netSE > 0 ? Math.max(0, 100 - totalPct) : 0;
+
+        els.barSe.style.width = Math.min(100, sePct).toFixed(2) + '%';
+        els.barFed.style.width = Math.min(100 - sePct, fedPct).toFixed(2) + '%';
+        els.barState.style.width = Math.min(100 - sePct - fedPct, statePct).toFixed(2) + '%';
+
+        els.pctSe.textContent = sePct.toFixed(1) + '%';
+        els.pctFed.textContent = fedPct.toFixed(1) + '%';
+        els.pctState.textContent = statePct.toFixed(1) + '%';
+        els.pctKeep.textContent = keepPct.toFixed(1) + '%';
+        els.keepPercent.textContent = res.netSE > 0
+          ? keepPct.toFixed(1) + '% estimated take-home'
+          : 'Enter 1099 income to see allocation';
+
+        els.allocationBar.setAttribute(
+          'aria-label',
+          'Self-employment tax ' + sePct.toFixed(1) + '%, federal tax ' + fedPct.toFixed(1) + '%, state tax ' + statePct.toFixed(1) + '%, take-home ' + keepPct.toFixed(1) + '%'
+        );
+
+        var formattedQuarter = currencyFmt.format(Math.round(res.quarterlyPayment));
+        for (var q = 0; q < els.quarterAmounts.length; q++) {
+          els.quarterAmounts[q].textContent = formattedQuarter;
+        }
+
+        if (res.hasLoss) {
+          els.resultsNote.textContent = 'Your expenses exceed gross 1099 income, creating a Schedule C business loss. Estimated quarterly tax on 1099 earnings is $0.';
+        } else if (res.netSE === 0) {
+          els.resultsNote.textContent = 'Enter your estimated gross 1099 income above to calculate your 2026 Form 1040-ES quarterly payments.';
+        } else if (res.totalAnnualTax < 1000) {
+          els.resultsNote.textContent = 'Your estimated annual federal tax is under $1,000, so the IRS generally does not require quarterly estimated payments.';
+        } else if (res.w2Income > 0) {
+          els.resultsNote.textContent = 'Assumes your employer already withholds tax on your W-2 wages. Numbers reflect the extra tax triggered by your 1099 profit.';
+        } else {
+          els.resultsNote.textContent = 'Set aside roughly ' + res.effectiveTaxRate.toFixed(1) + '% of every client payment into a separate tax savings account so each quarter is funded.';
+        }
+      }
+
+      function buildSummaryText(res) {
+        return [
+          '2026 1099 Quarterly Tax Estimate',
+          '--------------------------------',
+          'Filing Status: ' + filingLabels[res.filingStatus],
+          'Gross 1099 Income: ' + currencyExactFmt.format(res.grossIncome),
+          'Business Expenses: ' + currencyExactFmt.format(res.businessExpenses),
+          'Net 1099 Profit: ' + currencyExactFmt.format(res.netSE),
+          'Other W-2 Income: ' + currencyExactFmt.format(res.w2Income),
+          'State Tax Rate: ' + res.stateRate.toFixed(1) + '%',
+          '',
+          'Self-Employment Tax: ' + currencyExactFmt.format(res.totalSeTax),
+          'Federal Income Tax: ' + currencyExactFmt.format(res.federalIncomeTax),
+          'State Income Tax: ' + currencyExactFmt.format(res.stateTax),
+          'Deductible Half of SE Tax: -' + currencyExactFmt.format(res.deductibleHalfSeTax),
+          '',
+          'Total Estimated Annual Tax: ' + currencyExactFmt.format(res.totalAnnualTax),
+          'Recommended Quarterly Payment: ' + currencyExactFmt.format(res.quarterlyPayment),
+          'Effective Tax Rate (on 1099 Profit): ' + res.effectiveTaxRate.toFixed(1) + '%'
+        ].join('\n');
+      }
+
+      function showCopyFeedback(message) {
+        els.copyFeedback.textContent = message;
+        if (copyTimeout) clearTimeout(copyTimeout);
+        copyTimeout = setTimeout(function () {
+          els.copyFeedback.textContent = '';
+        }, 3000);
+      }
+
+      function copySummary() {
+        if (!lastResult) return;
+        var text = buildSummaryText(lastResult);
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(text).then(function () {
+            showCopyFeedback('Summary copied to clipboard.');
+          }).catch(function () {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try {
+          document.execCommand('copy');
+          showCopyFeedback('Summary copied to clipboard.');
+        } catch (e) {
+          showCopyFeedback('Unable to copy automatically.');
+        }
+        document.body.removeChild(area);
+      }
+
+      function resetForm() {
+        els.grossIncome.value = '0';
+        els.businessExpenses.value = '0';
+        els.filingStatus.value = 'single';
+        els.w2Income.value = '0';
+        els.stateRate.value = '0';
+        els.copyFeedback.textContent = '';
+        renderResults();
+        els.grossIncome.focus();
+      }
+
+      function setupFaqAccordion() {
+        var triggers = document.querySelectorAll('.faq-trigger');
+        for (var i = 0; i < triggers.length; i++) {
+          triggers[i].addEventListener('click', function () {
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            var panelId = this.getAttribute('aria-controls');
+            var panel = document.getElementById(panelId);
+            this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            if (panel) {
+              panel.hidden = expanded;
+            }
+          });
+        }
+      }
+
+      var inputs = [
+        els.grossIncome,
+        els.businessExpenses,
+        els.filingStatus,
+        els.w2Income,
+        els.stateRate
+      ];
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', renderResults);
+        inputs[i].addEventListener('change', renderResults);
+      }
+
+      els.copyBtn.addEventListener('click', copySummary);
+      els.resetBtn.addEventListener('click', resetForm);
+
+      if (els.headerJumpCta) {
+        els.headerJumpCta.addEventListener('click', function () {
+          setTimeout(function () {
+            els.grossIncome.focus();
+          }, 150);
+        });
+      }
+
+      if (els.copyrightYear) {
+        els.copyrightYear.textContent = String(new Date().getFullYear());
+      }
+
+      setupFaqAccordion();
+      renderResults();
+    })();
+  </script>
+</body>
+</html>
